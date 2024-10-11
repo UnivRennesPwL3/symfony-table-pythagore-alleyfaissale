@@ -17,8 +17,8 @@ class PythagoreUtility
         $html .= '</tr>';
 
         // Deuxième ligne de l'entête (0 à 10)
-        $html .= '<tr><th>0</th>';
-        for ($i = 1; $i <= 10; $i++) {
+        $html .= '<tr>';
+        for ($i = 0; $i <= 10; $i++) {
             $html .= "<th>$i</th>";
         }
         $html .= '</tr>';

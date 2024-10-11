@@ -7,28 +7,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class PythagoreController extends AbstractController
+final class PythagoreController extends AbstractController
 {
 
-    private $pythagoreUtility;
-
-    public function __construct(PythagoreUtility $pythagoreUtility)
-    {
-        $this->pythagoreUtility = $pythagoreUtility;
-    }
-
-    #[Route('/pythagore', name: 'app_pythagore')]
-    public function index(): Response
-    {
-        return $this->redirectToRoute("app_display_pythagore");
-        
-    }
-
     #[Route('/pythagore/view', name: 'app_display_pythagore')]
-    public function displayPythagoreAction(): Response
+    public function displayPythagoreAction(PythagoreUtility $pythagoreUtility): Response
     {
          // Récupérer le tableau de Pythagore via le service PythagoreUtility
-         $pythagoreTable = $this->pythagoreUtility->display();
+         $pythagoreTable = $pythagoreUtility->display();
 
          // Rendu de la vue Twig displayPythagore.html.twig
          return $this->render('displayPythagore.html.twig', [
